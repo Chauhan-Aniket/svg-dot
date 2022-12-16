@@ -101,8 +101,9 @@ const Custom = ({ svgRef, darkToggle }) => {
 
 	return (
 		<>
-			<SectionSvg svgRef={svgRef}>
+			<SectionSvg>
 				<SvgCustom
+					svgRef={svgRef}
 					viewBox={viewBox}
 					originArr={originArr}
 					textOrigin={textOrigin}

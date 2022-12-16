@@ -13,6 +13,7 @@ const SvgMatrix = ({
 	createOrigin,
 	handleRemove,
 	darkToggle,
+	svgRef,
 }) => {
 	const grid = [];
 	const diameter = radius * 2;
@@ -62,6 +63,7 @@ const SvgMatrix = ({
 
 	return (
 		<Svg
+			svgRef={svgRef}
 			width={svgWidth}
 			height={svgHeight}
 			viewBox={`-${radius * columnGap} -${

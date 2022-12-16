@@ -6,9 +6,11 @@ const Svg = ({
 	viewBox,
 	children,
 	darkToggle,
+	svgRef,
 }) => (
 	<svg
 		id={id}
+		ref={svgRef}
 		className={className}
 		version="1.1"
 		xmlns="http://www.w3.org/2000/svg"

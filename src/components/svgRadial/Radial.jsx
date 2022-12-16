@@ -79,8 +79,9 @@ const Radial = ({ svgRef, darkToggle }) => {
 
 	return (
 		<>
-			<SectionSvg svgRef={svgRef}>
+			<SectionSvg>
 				<SvgRadial
+					svgRef={svgRef}
 					radius={radius}
 					radialCount={radialCount}
 					verticleCount={verticleCount}

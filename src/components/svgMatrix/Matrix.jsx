@@ -71,8 +71,9 @@ const Matrix = ({ svgRef, darkToggle }) => {
 
 	return (
 		<>
-			<SectionSvg svgRef={svgRef}>
+			<SectionSvg>
 				<SvgMatrix
+					svgRef={svgRef}
 					radius={radius}
 					rows={rows}
 					columns={columns}

@@ -17,6 +17,7 @@ const SvgRadial = ({
 	createTextOrigin,
 	handleRemove,
 	darkToggle,
+	svgRef,
 }) => {
 	const circleRadius = 1 * radius;
 
@@ -82,6 +83,7 @@ const SvgRadial = ({
 	return (
 		<>
 			<Svg
+				svgRef={svgRef}
 				width={svgRectBound}
 				height={svgRectBound}
 				viewBox={`-${svgRectBound / 2} -${

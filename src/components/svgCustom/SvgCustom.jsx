@@ -11,6 +11,7 @@ const SvgCustom = ({
 	createTextOrigin,
 	handleRemove,
 	darkToggle,
+	svgRef,
 }) => {
 	const viewBoxWidth = vBox.width;
 	const viewBoxHeight = vBox.height;
@@ -145,6 +146,7 @@ const SvgCustom = ({
 	return (
 		<div id="svgContainer" className="relative w-full h-full">
 			<Svg
+				svgRef={svgRef}
 				id="svgImage"
 				viewBox={`0 0 ${viewBoxWidth === undefined ? 0 : viewBoxWidth} ${
 					viewBoxHeight === undefined ? 0 : viewBoxHeight
