@@ -22,7 +22,7 @@ const Tabs = ({ children, downloadSVG, darkToggle, toggleTheme }) => {
 										className={activeTab === index ? btnActiveClass : btnClass}
 										title={child.props.title}
 									>
-										{<child.props.label className="scale-125" />}
+										<child.props.label className="scale-125" />
 									</button>
 								</li>
 							);

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
-import { FiCircle, FiSquare, FiUpload } from "react-icons/fi";
+import { FiCircle, FiUpload } from "react-icons/fi";
+import { MdWindow } from "react-icons/md";
 
 import Radial from "./components/svgRadial/Radial";
 import Matrix from "./components/svgMatrix/Matrix";
@@ -56,7 +57,7 @@ const App = () => {
 				/>
 				<Matrix
 					title="Matrix SVG"
-					label={FiSquare}
+					label={MdWindow}
 					svgRef={svgRef}
 					darkToggle={darkToggle}
 				/>
