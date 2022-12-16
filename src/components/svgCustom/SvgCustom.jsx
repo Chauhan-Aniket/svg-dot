@@ -11,7 +11,6 @@ const SvgCustom = ({
 	createTextOrigin,
 	handleRemove,
 	darkToggle,
-	innerHTML,
 }) => {
 	const viewBoxWidth = vBox.width;
 	const viewBoxHeight = vBox.height;
@@ -20,7 +19,6 @@ const SvgCustom = ({
 	useEffect(() => {
 		const svgImage = document.getElementById("svgImage");
 		const svgContainer = document.getElementById("svgContainer");
-		console.log(svgContainer);
 		var viewBox = {
 			x: 0,
 			y: 0,
@@ -154,11 +152,7 @@ const SvgCustom = ({
 				darkToggle={darkToggle}
 				className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] w-full h-full cursor-hand"
 			>
-				<g
-					className={`${darkToggle ? "stroke-zinc-50" : "stroke-zinc-900"} `}
-					stroke={darkToggle ? "#fafafa" : "#18181b"}
-					strokeWidth={2}
-				>
+				<g stroke={darkToggle ? "#fafafa" : "#18181b"} strokeWidth={2}>
 					{svgLine}
 				</g>
 				<g fill="#2563EB" stroke={darkToggle ? "#fafafa" : "#18181b"}>

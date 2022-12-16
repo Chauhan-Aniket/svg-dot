@@ -24,8 +24,8 @@ const Custom = ({ svgRef, darkToggle }) => {
 	const origin = [];
 
 	const getSvg = (e) => {
-		const paths = e.target.querySelectorAll("g g path");
-		const circles = e.target.querySelectorAll("g g circle");
+		const paths = e.target.querySelectorAll("path");
+		const circles = e.target.querySelectorAll("circle");
 
 		paths &&
 			paths.forEach((path) => {
@@ -109,7 +109,6 @@ const Custom = ({ svgRef, darkToggle }) => {
 					handleRemove={handleRemove}
 					createTextOrigin={createTextOrigin}
 					darkToggle={darkToggle}
-					innerHTML={innerHTML}
 				/>
 			</SectionSvg>
 			<SectionSetting>

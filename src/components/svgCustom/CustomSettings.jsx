@@ -22,7 +22,7 @@ const CustomSettings = ({ fileRef, innerHTML, getSvg, handleFileChange }) => {
 			</form>
 
 			{innerHTML.__html === "" ? (
-				<div className="uploaded-svg text-sm tracking-[0.5px]">
+				<div ref={fileRef} className="uploaded-svg text-sm tracking-[0.5px]">
 					Click here after SVG Uploaded
 				</div>
 			) : (
