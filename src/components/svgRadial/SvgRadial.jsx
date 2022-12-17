@@ -81,8 +81,9 @@ const SvgRadial = ({
 	const svgRectBound = Math.max(...radialCounts) * 2 + circleRadius * 2;
 
 	return (
-		<>
+		<div id="svgContainer" className="relative w-full h-full">
 			<Svg
+				id="svgImage"
 				svgRef={svgRef}
 				width={svgRectBound}
 				height={svgRectBound}
@@ -90,6 +91,7 @@ const SvgRadial = ({
 					svgRectBound / 2
 				} ${svgRectBound} ${svgRectBound}`}
 				darkToggle={darkToggle}
+				className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] w-full h-full"
 			>
 				<g stroke={darkToggle ? "#fafafa" : "#18181b"} strokeWidth={2}>
 					{svgLine}
@@ -99,7 +101,7 @@ const SvgRadial = ({
 					{svgText}
 				</g>
 			</Svg>
-		</>
+		</div>
 	);
 };
 

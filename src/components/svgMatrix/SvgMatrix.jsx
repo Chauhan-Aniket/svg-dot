@@ -62,23 +62,27 @@ const SvgMatrix = ({
 	});
 
 	return (
-		<Svg
-			svgRef={svgRef}
-			width={svgWidth}
-			height={svgHeight}
-			viewBox={`-${radius * columnGap} -${
-				radius * rowGap
-			} ${svgWidth} ${svgHeight}`}
-			darkToggle={darkToggle}
-		>
-			<g stroke={darkToggle ? "#fafafa" : "#18181b"} strokeWidth={2}>
-				{svgLine}
-			</g>
-			<g fill="#2563EB" stroke={darkToggle ? "#fafafa" : "#18181b"}>
-				{svgCircle}
-				{svgText}
-			</g>
-		</Svg>
+		<div id="svgContainer" className="relative w-full h-full">
+			<Svg
+				id="svgImage"
+				svgRef={svgRef}
+				width={svgWidth}
+				height={svgHeight}
+				viewBox={`-${radius * columnGap} -${
+					radius * rowGap
+				} ${svgWidth} ${svgHeight}`}
+				darkToggle={darkToggle}
+				className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] w-full h-full"
+			>
+				<g stroke={darkToggle ? "#fafafa" : "#18181b"} strokeWidth={2}>
+					{svgLine}
+				</g>
+				<g fill="#2563EB" stroke={darkToggle ? "#fafafa" : "#18181b"}>
+					{svgCircle}
+					{svgText}
+				</g>
+			</Svg>
+		</div>
 	);
 };
 
