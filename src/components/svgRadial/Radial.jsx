@@ -5,7 +5,7 @@ import RadialSettings from "./RadialSettings";
 import { radialParams } from "../Params";
 import { SectionSvg, SectionSetting } from "../Style";
 
-const Radial = ({ svgRef, darkToggle }) => {
+const Radial = ({ svgRef, darkToggle, resetFunc }) => {
 	const [radius, setRadius] = useState(radialParams.radius);
 	const [radialCount, setRadialCount] = useState(radialParams.radialCount);
 	const [verticleCount, setVerticleCount] = useState(
@@ -49,6 +49,19 @@ const Radial = ({ svgRef, darkToggle }) => {
 			},
 		]);
 	};
+
+	// TODO: reset text and line
+	useEffect(() => {
+		const resetSvg = () => {
+			setTextOrigin([]);
+
+			const circles = svgRef.current.querySelectorAll("circle");
+			circles &&
+				circles.forEach((circle) => (circle.style.pointerEvents = "all"));
+		};
+
+		resetFunc.current = resetSvg;
+	}, [resetFunc, svgRef]);
 
 	// TODO: remove text element
 	const handleRemove = (e) => {

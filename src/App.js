@@ -42,30 +42,36 @@ const App = () => {
 		setTimeout(() => URL.revokeObjectURL(objectUrl), 5000);
 	};
 
+	const resetFunc = useRef(null);
+
 	return (
 		<div className={darkToggle ? "dark" : ""}>
 			<Tabs
 				downloadSVG={downloadSVG}
 				darkToggle={darkToggle}
 				toggleTheme={toggleTheme}
+				resetFunc={resetFunc}
 			>
 				<Radial
 					title="Radial SVG"
 					label={FiCircle}
 					svgRef={svgRef}
 					darkToggle={darkToggle}
+					resetFunc={resetFunc}
 				/>
 				<Matrix
 					title="Matrix SVG"
 					label={MdWindow}
 					svgRef={svgRef}
 					darkToggle={darkToggle}
+					resetFunc={resetFunc}
 				/>
 				<Custom
 					title="Custom SVG"
 					label={FiUpload}
 					svgRef={svgRef}
 					darkToggle={darkToggle}
+					resetFunc={resetFunc}
 				/>
 			</Tabs>
 		</div>

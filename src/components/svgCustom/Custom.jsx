@@ -4,7 +4,7 @@ import CustomSettings from "./CustomSettings";
 
 import { SectionSvg, SectionSetting } from "../Style";
 
-const Custom = ({ svgRef, darkToggle }) => {
+const Custom = ({ svgRef, darkToggle, resetFunc }) => {
 	const [innerHTML, setInnerHTML] = useState({ __html: "" });
 
 	const handleFileChange = (e) => {
@@ -81,6 +81,19 @@ const Custom = ({ svgRef, darkToggle }) => {
 			},
 		]);
 	};
+
+	// TODO: reset text and line
+	useEffect(() => {
+		const resetSvg = () => {
+			setTextOrigin([]);
+
+			const circles = svgRef.current.querySelectorAll("circle");
+			circles &&
+				circles.forEach((circle) => (circle.style.pointerEvents = "all"));
+		};
+
+		resetFunc.current = resetSvg;
+	}, [resetFunc, svgRef]);
 
 	// TODO: remove text element
 	const handleRemove = (e) => {

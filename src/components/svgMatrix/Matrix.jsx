@@ -5,7 +5,7 @@ import MatrixSettings from "./MatrixSettings";
 import { matrixParams } from "../Params";
 import { SectionSvg, SectionSetting } from "../Style";
 
-const Matrix = ({ svgRef, darkToggle }) => {
+const Matrix = ({ svgRef, darkToggle, resetFunc }) => {
 	const [radius, setRadius] = useState(matrixParams.radius);
 	const [rows, setRows] = useState(matrixParams.rows);
 	const [columns, setColumns] = useState(matrixParams.columns);
@@ -61,6 +61,18 @@ const Matrix = ({ svgRef, darkToggle }) => {
 					(e.target.parentElement.children[i].style.pointerEvents = "all"));
 		}
 	};
+
+	// TODO: reset text and line
+	useEffect(() => {
+		const resetSvg = () => {
+			setOrigin([]);
+
+			const circles = svgRef.current.querySelectorAll("circle");
+			circles &&
+				circles.forEach((circle) => (circle.style.pointerEvents = "all"));
+		};
+		resetFunc.current = resetSvg;
+	}, [resetFunc, svgRef]);
 
 	// TODO: remove element from selected element index
 	function removeTexts(arr, element) {
