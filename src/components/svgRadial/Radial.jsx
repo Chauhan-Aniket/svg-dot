@@ -36,6 +36,16 @@ const Radial = ({ svgRef, darkToggle, resetFunc }) => {
 		setOffset(e.target.value);
 	};
 
+	// TODO: reset params
+	const resetSvgParams = () => {
+		setRadius(radialParams.radius);
+		setRadialCount(radialParams.radialCount);
+		setVerticleCount(radialParams.verticleCount);
+		setCenterDistance(radialParams.centerDistance);
+		setEdgeDistance(radialParams.edgeDistance);
+		setOffset(radialParams.offset);
+	};
+
 	// TODO: create dynamic text position
 	const [textOrigin, setTextOrigin] = useState([]);
 
@@ -198,7 +208,7 @@ const Radial = ({ svgRef, darkToggle, resetFunc }) => {
 					darkToggle={darkToggle}
 				/>
 			</SectionSvg>
-			<SectionSetting>
+			<SectionSetting resetSvgParams={resetSvgParams}>
 				<RadialSettings
 					radius={radius}
 					radiusValue={radiusValue}

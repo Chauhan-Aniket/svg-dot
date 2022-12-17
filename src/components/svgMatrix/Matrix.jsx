@@ -28,6 +28,15 @@ const Matrix = ({ svgRef, darkToggle, resetFunc }) => {
 		setColumnGap(e.target.value);
 	};
 
+	// TODO: reset params
+	const resetSvgParams = () => {
+		setRadius(matrixParams.radius);
+		setRows(matrixParams.rows);
+		setColumns(matrixParams.columns);
+		setRowGap(matrixParams.rowGap);
+		setColumnGap(matrixParams.columnGap);
+	};
+
 	// TODO: get circle position to create dynamic text & line
 	const [origin, setOrigin] = useState([]);
 
@@ -188,7 +197,7 @@ const Matrix = ({ svgRef, darkToggle, resetFunc }) => {
 					darkToggle={darkToggle}
 				/>
 			</SectionSvg>
-			<SectionSetting>
+			<SectionSetting resetSvgParams={resetSvgParams}>
 				<MatrixSettings
 					radius={radius}
 					radiusValue={radiusValue}
