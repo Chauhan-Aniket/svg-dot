@@ -1,6 +1,6 @@
 import React from "react";
 
-const CustomSettings = ({ innerHTML, getSvg, handleFileChange }) => {
+const CustomSettings = ({ innerHTML, handleFileChange }) => {
 	return (
 		<>
 			<form className="w-full py-5 border-t border-t-zinc-200 dark:border-t-[rgba(42,42,45,1)]">
