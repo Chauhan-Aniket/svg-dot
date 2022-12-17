@@ -21,11 +21,13 @@ const Custom = ({ svgRef, darkToggle }) => {
 	// TODO: get origin from uploaded file to create svg dynamically
 	const [viewBox, setViewBox] = useState({});
 	const [originArr, setOriginArr] = useState([]);
+	const [circleRadius, setCircleRadius] = useState(10);
 	const origin = [];
 
 	const getSvg = (e) => {
 		const paths = e.target.querySelectorAll("path");
 		const circles = e.target.querySelectorAll("circle");
+		const ellipses = e.target.querySelectorAll("ellipse");
 
 		paths &&
 			paths.forEach((path) => {
@@ -43,6 +45,15 @@ const Custom = ({ svgRef, darkToggle }) => {
 				origin.push({
 					x: circle.getAttribute("cx"),
 					y: circle.getAttribute("cy"),
+				});
+				setCircleRadius(circle.getAttribute("r"));
+			});
+
+		ellipses &&
+			ellipses.forEach((ellipse) => {
+				origin.push({
+					x: ellipse.getAttribute("cx"),
+					y: ellipse.getAttribute("cy"),
 				});
 			});
 
@@ -108,6 +119,7 @@ const Custom = ({ svgRef, darkToggle }) => {
 					originArr={originArr}
 					textOrigin={textOrigin}
 					handleRemove={handleRemove}
+					circleRadius={circleRadius}
 					createTextOrigin={createTextOrigin}
 					darkToggle={darkToggle}
 				/>

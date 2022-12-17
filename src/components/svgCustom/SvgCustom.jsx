@@ -10,12 +10,13 @@ const SvgCustom = ({
 	textOrigin,
 	createTextOrigin,
 	handleRemove,
+	circleRadius,
 	darkToggle,
 	svgRef,
 }) => {
 	const viewBoxWidth = vBox.width;
 	const viewBoxHeight = vBox.height;
-	const radius = 25.65;
+	const radius = circleRadius;
 
 	useEffect(() => {
 		const svgImage = document.getElementById("svgImage");
