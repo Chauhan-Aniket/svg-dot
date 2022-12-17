@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import SvgCustom from "./SvgCustom";
 import CustomSettings from "./CustomSettings";
 
@@ -6,7 +6,6 @@ import { SectionSvg, SectionSetting } from "../Style";
 
 const Custom = ({ svgRef, darkToggle }) => {
 	const [innerHTML, setInnerHTML] = useState({ __html: "" });
-	const fileRef = useRef(null);
 
 	const handleFileChange = (e) => {
 		// Use the FileReader API to read the contents of the file
@@ -110,6 +109,11 @@ const Custom = ({ svgRef, darkToggle }) => {
 		arr.splice(startIndex, numElements);
 	}
 
+	useEffect(() => {
+		const miniSvg = document.getElementById("miniSvg");
+		miniSvg && miniSvg.addEventListener("click", getSvg);
+	});
+
 	return (
 		<>
 			<SectionSvg>
@@ -126,7 +130,6 @@ const Custom = ({ svgRef, darkToggle }) => {
 			</SectionSvg>
 			<SectionSetting>
 				<CustomSettings
-					fileRef={fileRef}
 					innerHTML={innerHTML}
 					getSvg={getSvg}
 					handleFileChange={handleFileChange}

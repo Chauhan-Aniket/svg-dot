@@ -1,14 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const CustomSettings = ({ fileRef, innerHTML, getSvg, handleFileChange }) => {
-	const svgEle = fileRef.current;
-
-	useEffect(() => {
-		svgEle === null
-			? console.log("Upload SVG")
-			: svgEle.children[0].addEventListener("click", getSvg);
-	});
-
+const CustomSettings = ({ innerHTML, getSvg, handleFileChange }) => {
 	return (
 		<>
 			<form className="w-full py-5 border-t border-t-zinc-200 dark:border-t-[rgba(42,42,45,1)]">
@@ -22,12 +14,12 @@ const CustomSettings = ({ fileRef, innerHTML, getSvg, handleFileChange }) => {
 			</form>
 
 			{innerHTML.__html === "" ? (
-				<div ref={fileRef} className="uploaded-svg text-sm tracking-[0.5px]">
+				<div className="uploaded-svg text-sm tracking-[0.5px]">
 					Click here after SVG Uploaded
 				</div>
 			) : (
 				<div
-					ref={fileRef}
+					id="miniSvg"
 					dangerouslySetInnerHTML={innerHTML}
 					className="uploaded-svg"
 				></div>
