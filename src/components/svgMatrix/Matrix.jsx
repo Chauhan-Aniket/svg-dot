@@ -74,8 +74,8 @@ const Matrix = ({ svgRef, darkToggle }) => {
 		const svgImage = document.getElementById("svgImage");
 		const svgContainer = document.getElementById("svgContainer");
 		let viewBox = {
-			x: -svgImage.getAttribute("r") * 4,
-			y: -svgImage.getAttribute("r") * 4,
+			x: -radius * 2,
+			y: -radius * 2,
 			w: svgImage.viewBox.baseVal.width,
 			h: svgImage.viewBox.baseVal.height,
 		};
@@ -158,7 +158,7 @@ const Matrix = ({ svgRef, darkToggle }) => {
 		svgContainer.onmouseleave = function (e) {
 			isPanning = false;
 		};
-	}, []);
+	}, [radius]);
 
 	return (
 		<>
