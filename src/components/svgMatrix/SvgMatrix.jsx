@@ -72,7 +72,7 @@ const SvgMatrix = ({
 					radius * rowGap
 				} ${svgWidth} ${svgHeight}`}
 				darkToggle={darkToggle}
-				className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] w-full h-full"
+				className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] w-full h-full cursor-grab"
 			>
 				<g stroke={darkToggle ? "#fafafa" : "#18181b"} strokeWidth={2}>
 					{svgLine}

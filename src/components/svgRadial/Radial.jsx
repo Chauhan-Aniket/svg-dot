@@ -147,6 +147,8 @@ const Radial = ({ svgRef, darkToggle, resetFunc }) => {
 		svgContainer.onmousedown = function (e) {
 			isPanning = true;
 			startPoint = { x: e.x, y: e.y };
+			e.target.classList.add("cursor-grabbing");
+			e.target.classList.remove("cursor-grab");
 		};
 
 		svgContainer.onmousemove = function (e) {
@@ -164,6 +166,8 @@ const Radial = ({ svgRef, darkToggle, resetFunc }) => {
 					"viewBox",
 					`${movedViewBox.x} ${movedViewBox.y} ${movedViewBox.w} ${movedViewBox.h}`
 				);
+				e.target.classList.add("cursor-grabbing");
+				e.target.classList.remove("cursor-grab");
 			}
 		};
 
@@ -183,11 +187,15 @@ const Radial = ({ svgRef, darkToggle, resetFunc }) => {
 					`${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`
 				);
 				isPanning = false;
+				e.target.classList.add("cursor-grab");
+				e.target.classList.remove("cursor-grabbing");
 			}
 		};
 
 		svgContainer.onmouseleave = function (e) {
 			isPanning = false;
+			e.target.classList.add("cursor-grab");
+			e.target.classList.remove("cursor-grabbing");
 		};
 	}, []);
 

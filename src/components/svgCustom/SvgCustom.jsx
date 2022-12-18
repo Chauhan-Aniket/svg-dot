@@ -63,6 +63,8 @@ const SvgCustom = ({
 		svgContainer.onmousedown = function (e) {
 			isPanning = true;
 			startPoint = { x: e.x, y: e.y };
+			e.target.classList.add("cursor-grabbing");
+			e.target.classList.remove("cursor-grab");
 		};
 
 		svgContainer.onmousemove = function (e) {
@@ -80,6 +82,8 @@ const SvgCustom = ({
 					"viewBox",
 					`${movedViewBox.x} ${movedViewBox.y} ${movedViewBox.w} ${movedViewBox.h}`
 				);
+				e.target.classList.add("cursor-grabbing");
+				e.target.classList.remove("cursor-grab");
 			}
 		};
 
@@ -99,11 +103,15 @@ const SvgCustom = ({
 					`${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`
 				);
 				isPanning = false;
+				e.target.classList.add("cursor-grab");
+				e.target.classList.remove("cursor-grabbing");
 			}
 		};
 
 		svgContainer.onmouseleave = function (e) {
 			isPanning = false;
+			e.target.classList.add("cursor-grab");
+			e.target.classList.remove("cursor-grabbing");
 		};
 	}, [viewBoxWidth, viewBoxHeight]);
 
@@ -153,7 +161,7 @@ const SvgCustom = ({
 					viewBoxHeight === undefined ? 0 : viewBoxHeight
 				}`}
 				darkToggle={darkToggle}
-				className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] w-full h-full cursor-hand"
+				className="absolute top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%] w-full h-full cursor-grab"
 			>
 				<g stroke={darkToggle ? "#fafafa" : "#18181b"} strokeWidth={2}>
 					{svgLine}

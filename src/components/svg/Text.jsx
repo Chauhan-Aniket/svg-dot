@@ -9,7 +9,7 @@ const Text = ({ x, y, r, children, handleRemove }) => {
 			textAnchor="middle"
 			alignmentBaseline="central"
 			onClick={handleRemove}
-			className="select-none"
+			className="select-none cursor-default"
 		>
 			&nbsp;&nbsp;{children}&nbsp;&nbsp;
 		</text>
