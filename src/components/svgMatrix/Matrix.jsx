@@ -137,6 +137,7 @@ const Matrix = ({ svgRef, darkToggle, resetFunc }) => {
 		svgContainer.onmousedown = function (e) {
 			isPanning = true;
 			startPoint = { x: e.x, y: e.y };
+			isPanning && (e.target.style.cursor = "grabbing");
 		};
 
 		svgContainer.onmousemove = function (e) {
@@ -154,6 +155,7 @@ const Matrix = ({ svgRef, darkToggle, resetFunc }) => {
 					"viewBox",
 					`${movedViewBox.x} ${movedViewBox.y} ${movedViewBox.w} ${movedViewBox.h}`
 				);
+				e.target.style.cursor = "grabbing";
 			}
 		};
 
@@ -173,6 +175,7 @@ const Matrix = ({ svgRef, darkToggle, resetFunc }) => {
 					`${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`
 				);
 				isPanning = false;
+				e.target.style.cursor = "grab";
 			}
 		};
 

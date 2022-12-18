@@ -144,7 +144,6 @@ const Custom = ({ svgRef, darkToggle, resetFunc }) => {
 			<SectionSetting>
 				<CustomSettings
 					innerHTML={innerHTML}
-					getSvg={getSvg}
 					handleFileChange={handleFileChange}
 				/>
 			</SectionSetting>

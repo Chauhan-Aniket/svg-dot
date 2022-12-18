@@ -10,6 +10,7 @@ const Text = ({ x, y, r, children, handleRemove }) => {
 			alignmentBaseline="central"
 			onClick={handleRemove}
 			className="select-none"
+			style={{ cursor: "default" }}
 		>
 			&nbsp;&nbsp;{children}&nbsp;&nbsp;
 		</text>
