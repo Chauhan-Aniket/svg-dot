@@ -6,8 +6,11 @@ import Radial from "./components/svgRadial/Radial";
 import Matrix from "./components/svgMatrix/Matrix";
 import Custom from "./components/svgCustom/Custom";
 import Tabs from "./components/utils/Tabs";
+import Alert from "./components/utils/Alert";
 
 const App = () => {
+	const [visible, setVisible] = useState(false); // alert
+
 	// TODO: Dark Mode
 	const [darkToggle, setDarkToggle] = useState(true);
 	const toggleTheme = () => setDarkToggle(!darkToggle);
@@ -26,7 +29,36 @@ const App = () => {
 			}
 		);
 		const blob = new Blob([svg], { type: "image/svg+xml" });
-		downloadBlob(blob, `exported-file.svg`);
+
+		//TODO: Get empty circles, no text on circle
+		const circles = svgRef.current.querySelectorAll("circle");
+		const texts = svgRef.current.querySelectorAll("text");
+
+		// make pointerEvents none to all circle
+		if (circles.length === texts.length) {
+			circles.forEach(
+				(circle) =>
+					circle.style.pointerEvents === "all" &&
+					(circle.style.pointerEvents = "none")
+			);
+		}
+
+		const circleArr = Array.from(circles); // convert Nodelist/array-like-object to array
+		// run the condition only once, for the first item in the circles array that has a style different from 'none'/'all'.
+		if (circleArr.some((circle) => circle.style.pointerEvents !== "none")) {
+			showAlert();
+			// remove alert after 3s
+			setTimeout(() => {
+				hideAlert();
+			}, 3000);
+			return;
+		}
+
+		if (circleArr.some((circle) => circle.style.pointerEvents !== "all")) {
+			downloadBlob(blob, `exported-file.svg`);
+			hideAlert();
+			return;
+		}
 	}, []);
 
 	const downloadBlob = (blob, filename) => {
@@ -42,10 +74,18 @@ const App = () => {
 		setTimeout(() => URL.revokeObjectURL(objectUrl), 5000);
 	};
 
+	//  TODO: Custom alert pop-up
+	const showAlert = () => {
+		setVisible(true);
+	};
+	const hideAlert = () => {
+		setVisible(false);
+	};
+
 	const resetFunc = useRef(null);
 
 	return (
-		<div className={darkToggle ? "dark" : ""}>
+		<div className={darkToggle ? "dark relative" : "relative"}>
 			<Tabs
 				downloadSVG={downloadSVG}
 				darkToggle={darkToggle}
@@ -74,6 +114,7 @@ const App = () => {
 					resetFunc={resetFunc}
 				/>
 			</Tabs>
+			{visible && <Alert hideAlert={hideAlert} />}
 		</div>
 	);
 };
