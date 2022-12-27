@@ -34,12 +34,12 @@ const SvgMatrix = ({
 		<Circle key={index} cx={x} cy={y} r={radius} event={createOrigin} />
 	));
 
-	const svgText = origin.map(({ tx, ty }, index) => {
+	const svgText = origin.map(({ x, y }, index) => {
 		return (
 			<Text
 				key={index}
-				x={tx}
-				y={ty}
+				x={x}
+				y={y}
 				r={radius}
 				children={index + 1}
 				handleRemove={handleRemove}
@@ -47,15 +47,15 @@ const SvgMatrix = ({
 		);
 	});
 
-	const svgLine = origin.map(({ tx, ty }, index) => {
+	const svgLine = origin.map(({ x, y }, index) => {
 		return (
 			index > 0 && (
 				<Line
 					key={index}
-					x1={origin[index - 1].tx}
-					y1={origin[index - 1].ty}
-					x2={tx}
-					y2={ty}
+					x1={origin[index - 1].x}
+					y1={origin[index - 1].y}
+					x2={x}
+					y2={y}
 				/>
 			)
 		);

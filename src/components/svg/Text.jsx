@@ -5,14 +5,14 @@ const Text = ({ x, y, r, children, handleRemove }) => {
 			y={y}
 			fill="#fafafa"
 			stroke="none"
-			fontSize={`${r / 10}rem`}
+			fontSize={`${r / 15}rem`}
 			textAnchor="middle"
 			alignmentBaseline="central"
 			onClick={handleRemove}
 			className="select-none"
 			style={{ cursor: "default" }}
 		>
-			&nbsp;&nbsp;{children}&nbsp;&nbsp;
+			{children}
 		</text>
 	);
 };

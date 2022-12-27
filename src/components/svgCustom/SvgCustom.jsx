@@ -125,12 +125,12 @@ const SvgCustom = ({
 		/>
 	));
 
-	const svgText = textOrigin.map(({ tx, ty }, index) => {
+	const svgText = textOrigin.map(({ x, y }, index) => {
 		return (
 			<Text
 				key={index}
-				x={tx}
-				y={ty}
+				x={x}
+				y={y}
 				r={radius}
 				children={index + 1}
 				handleRemove={handleRemove}
@@ -138,15 +138,15 @@ const SvgCustom = ({
 		);
 	});
 
-	const svgLine = textOrigin.map(({ tx, ty }, index) => {
+	const svgLine = textOrigin.map(({ x, y }, index) => {
 		return (
 			index > 0 && (
 				<Line
 					key={index}
-					x1={textOrigin[index - 1].tx}
-					y1={textOrigin[index - 1].ty}
-					x2={tx}
-					y2={ty}
+					x1={textOrigin[index - 1].x}
+					y1={textOrigin[index - 1].y}
+					x2={x}
+					y2={y}
 				/>
 			)
 		);

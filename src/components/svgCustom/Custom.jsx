@@ -72,14 +72,12 @@ const Custom = ({ svgRef, darkToggle, resetFunc }) => {
 	const [textOrigin, setTextOrigin] = useState([]);
 
 	const createTextOrigin = (e) => {
-		e.target.style.pointerEvents = "none";
-		setTextOrigin([
-			...textOrigin,
-			{
-				tx: e.target.cx.baseVal.value,
-				ty: e.target.cy.baseVal.value,
-			},
-		]);
+		const x = e.target.cx.baseVal.value;
+		const y = e.target.cy.baseVal.value;
+
+		if (!textOrigin.some((origin) => origin.x === x && origin.y === y)) {
+			setTextOrigin((prev) => [...prev, { x, y }]);
+		}
 	};
 
 	// TODO: reset text and line
@@ -103,16 +101,6 @@ const Custom = ({ svgRef, darkToggle, resetFunc }) => {
 		const newTextOrigin = [...textOrigin];
 		removeTexts(newTextOrigin, Number(e.target.textContent));
 		e.shiftKey && setTextOrigin(newTextOrigin);
-
-		// TODO: apply pointer events to all circle
-		for (let i = 0; i < e.target.parentElement.children.length; i++) {
-			const { pointerEvents } = getComputedStyle(
-				e.target.parentElement.children[i]
-			);
-			(e.shiftKey && e.ctrlKey) ||
-				(pointerEvents === "none" &&
-					(e.target.parentElement.children[i].style.pointerEvents = "all"));
-		}
 	};
 
 	// TODO: remove element from selected element index

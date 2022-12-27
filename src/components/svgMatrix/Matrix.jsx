@@ -41,14 +41,12 @@ const Matrix = ({ svgRef, darkToggle, resetFunc }) => {
 	const [origin, setOrigin] = useState([]);
 
 	const createOrigin = (e) => {
-		e.target.style.pointerEvents = "none";
-		setOrigin([
-			...origin,
-			{
-				tx: e.target.cx.baseVal.value,
-				ty: e.target.cy.baseVal.value,
-			},
-		]);
+		const x = e.target.cx.baseVal.value;
+		const y = e.target.cy.baseVal.value;
+
+		if (!origin.some((origin) => origin.x === x && origin.y === y)) {
+			setOrigin((prev) => [...prev, { x, y }]);
+		}
 	};
 
 	// TODO: remove text element
@@ -59,16 +57,6 @@ const Matrix = ({ svgRef, darkToggle, resetFunc }) => {
 		const newTextOrigin = [...origin];
 		removeTexts(newTextOrigin, Number(e.target.textContent));
 		e.shiftKey && setOrigin(newTextOrigin);
-
-		// TODO: apply pointer events to all circle
-		for (let i = 0; i < e.target.parentElement.children.length; i++) {
-			const { pointerEvents } = getComputedStyle(
-				e.target.parentElement.children[i]
-			);
-			(e.shiftKey && e.ctrlKey) ||
-				(pointerEvents === "none" &&
-					(e.target.parentElement.children[i].style.pointerEvents = "all"));
-		}
 	};
 
 	// TODO: reset text and line
