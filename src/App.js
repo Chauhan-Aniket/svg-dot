@@ -30,34 +30,19 @@ const App = () => {
 		);
 		const blob = new Blob([svg], { type: "image/svg+xml" });
 
-		//TODO: Get empty circles, no text on circle
+		//TODO: if no text on circle, alert!
 		const circles = svgRef.current.querySelectorAll("circle");
 		const texts = svgRef.current.querySelectorAll("text");
 
-		// make pointerEvents none to all circle
 		if (circles.length === texts.length) {
-			circles.forEach(
-				(circle) =>
-					circle.style.pointerEvents === "all" &&
-					(circle.style.pointerEvents = "none")
-			);
-		}
-
-		const circleArr = Array.from(circles); // convert Nodelist/array-like-object to array
-		// run the condition only once, for the first item in the circles array that has a style different from 'none'/'all'.
-		if (circleArr.some((circle) => circle.style.pointerEvents !== "none")) {
+			downloadBlob(blob, `exported-file.svg`);
+			hideAlert();
+		} else {
 			showAlert();
 			// remove alert after 3s
 			setTimeout(() => {
 				hideAlert();
 			}, 3000);
-			return;
-		}
-
-		if (circleArr.some((circle) => circle.style.pointerEvents !== "all")) {
-			downloadBlob(blob, `exported-file.svg`);
-			hideAlert();
-			return;
 		}
 	}, []);
 
